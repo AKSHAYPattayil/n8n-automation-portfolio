@@ -1,0 +1,456 @@
+{
+  "name": "my_prompt_generator",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Prompt Generator",
+        "formDescription": "Generate high-quality prompts tailored to your needs",
+        "options": {
+          "appendAttribution": true,
+          "buttonLabel": "Start",
+          "customCss": ":root {\n\t/* Typography */\n\t--font-family: 'Open Sans', sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\n\t--font-size-body: 15px;\n\t--font-size-label: 16px;\n\t--font-size-test-notice: 14px;\n\t--font-size-input: 16px;\n\t--font-size-header: 26px;\n\t--font-size-subheader: 18px;\n\t--font-size-paragraph: 16px;\n\t--font-size-link: 14px;\n\t--font-size-error: 14px;\n\n\t--font-size-html-h1: 34px;\n\t--font-size-html-h2: 26px;\n\t--font-size-html-h3: 20px;\n\t--font-size-html-h4: 18px;\n\t--font-size-html-h5: 16px;\n\t--font-size-html-h6: 14px;\n\n\t/* 🌿 Green Palette */\n\t--color-background: #f6faf8;\n\n\t--color-test-notice-text: #2f855a;\n\t--color-test-notice-bg: #edf7f2;\n\t--color-test-notice-border: #b7e4c7;\n\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #d1e7dd;\n\t--color-card-shadow: rgba(16, 185, 129, 0.14);\n\n\t--color-header: #1f2937;\n\t--color-header-subtext: #6b7280;\n\n\t--color-label: #374151;\n\t--color-input-text: #1f2937;\n\t--color-input-border: #cfe5dc;\n\t--color-focus-border: #22c55e;\n\n\t--color-link: #16a34a;\n\t--color-html-link: #16a34a;\n\t--color-html-text: #374151;\n\n\t/* Primary Actions */\n\t--color-submit-btn-bg: #22c55e;\n\t--color-submit-btn-text: #ffffff;\n\n\t/* Errors */\n\t--color-error: #dc2626;\n\t--color-required: #22c55e;\n\n\t/* Secondary */\n\t--color-clear-button-bg: #9ca3af;\n\n\t/* Layout */\n\t--border-radius-card: 14px;\n\t--border-radius-input: 10px;\n\t--border-radius-clear-btn: 50%;\n\n\t/* Spacing */\n\t--padding-container-top: 40px;\n\t--padding-card: 32px;\n\t--padding-test-notice-vertical: 14px;\n\t--padding-test-notice-horizontal: 24px;\n\t--margin-bottom-card: 24px;\n\t--padding-form-input: 16px;\n\n\t/* Dimensions */\n\t--container-width: 560px;\n\t--submit-btn-height: 56px;\n\t--checkbox-size: 20px;\n\n\t/* Effects */\n\t--box-shadow-card: 0px 14px 40px rgba(16, 185, 129, 0.18);\n\t--opacity-placeholder: 0.45;\n}\n"
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -1584,
+        256
+      ],
+      "id": "ace890f8-31f0-4f53-b216-d55e9738d23c",
+      "name": "On form submission",
+      "webhookId": "8d209195-038e-4753-bede-1f440f30cf67"
+    },
+    {
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "Goal",
+              "fieldLabel": "What are you trying to create?",
+              "fieldType": "textarea",
+              "placeholder": "Example: An AI-powered YouTube Shorts content generator",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Tools",
+              "fieldLabel": "Which tools or capabilities can I use?",
+              "fieldType": "textarea",
+              "placeholder": "List available tools(eg Web search,API etc)"
+            },
+            {
+              "fieldName": "inputs",
+              "fieldLabel": "What inputs will the user provide?",
+              "fieldType": "textarea",
+              "placeholder": "List all required and optional inputs (e.g., attachments, metadata, or additional information).",
+              "requiredField": true
+            },
+            {
+              "fieldName": "output",
+              "fieldLabel": "What should the output look like?",
+              "placeholder": "eg: A detailed, time-based script optimized for YouTube Shorts generation"
+            }
+          ]
+        },
+        "options": {
+          "formTitle": "Let us know your details below",
+          "buttonLabel": "Submit",
+          "customCss": "/* Apply to all n8n form pages */\n.card {\n\tposition: relative;\n\tmax-width: 400px; /* smaller width */\n\tmargin: 16px auto; /* reduced margin */\n\tpadding: 16px; /* reduced padding */\n\tbackground: var(--color-card-bg, #ffffff) !important;\n\tborder-radius: 12px;\n\tbox-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);\n\tfont-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);\n\tbox-sizing: border-box;\n}\n\n/* Top accent bar */\n.card:before {\n\tcontent: '';\n\tdisplay: block;\n\theight: 40px; /* smaller top bar */\n\tbackground: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);\n\tmargin: -16px -16px 24px -16px; /* adjusted to match padding */\n\tborder-radius: 12px 12px 0 0;\n}\n\n/* Headings */\n.card h1,\n.card h2 {\n\ttext-align: center !important;\n\tcolor: var(--color-header, #111111) !important;\n\tfont-weight: 600 !important;\n\tmargin: 16px 0 !important;\n\tfont-size: 20px !important; /* smaller font */\n}\n\n/* Paragraph text */\n.card p {\n\tfont-size: 14px !important; /* smaller font */\n\tline-height: 1.4 !important;\n\tcolor: var(--color-html-text, #333333);\n}\n\n/* Inputs */\n.inputs-wrapper {\n\tposition: relative;\n}\n\n.form-group {\n\tmargin-bottom: 16px;\n}\n\n.card input,\n.card textarea,\n.card select {\n\twidth: 100% !important;\n\tpadding: 10px !important; /* reduced padding */\n\tborder: 2px solid var(--color-input-border, #d1d5db) !important;\n\tborder-radius: 8px !important;\n\tfont-size: 14px !important; /* smaller font */\n\tcolor: var(--color-input-text, #111111);\n\tbox-sizing: border-box !important;\n\ttransition: border-color 0.25s ease, box-shadow 0.25s ease !important;\n\tbackground: #ffffff;\n}\n\n.card textarea {\n\tmin-height: 100px; /* reduced height */\n\tresize: vertical;\n}\n\n.card input::placeholder,\n.card textarea::placeholder {\n\topacity: 0.5;\n}\n\n/* Focus state */\n.card input:focus,\n.card textarea:focus,\n.card select:focus {\n\tborder-color: #22c55e !important;\n\tbox-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15) !important;\n\toutline: none !important;\n}\n\n/* Submit button */\n.card button[type=\"submit\"] {\n\tbackground: linear-gradient(135deg, #16a34a 0%, #22c55e 100%) !important;\n\tcolor: #ffffff !important;\n\tpadding: 12px 30px !important; /* smaller button */\n\tborder-radius: 10px !important;\n\tfont-size: 16px !important;\n\tfont-weight: 600 !important;\n\tcursor: pointer !important;\n\twidth: 100% !important;\n\tbox-shadow: 0 4px 15px rgba(34, 197, 94, 0.35) !important;\n\ttransition: transform 0.2s ease, box-shadow 0.2s ease !important;\n\tborder: none !important;\n}\n\n.card button[type=\"submit\"]:hover {\n\ttransform: translateY(-1px) !important;\n\tbox-shadow: 0 6px 20px rgba(34, 197, 94, 0.45) !important;\n}\n\n/* Error message */\n.error-hidden {\n\tdisplay: block;\n\tposition: relative;\n\tcolor: var(--color-error, #dc2626);\n\ttext-align: left;\n\tfont-size: 12px;\n\tfont-weight: 400;\n\tvisibility: hidden;\n\tpadding-top: 4px;\n}\n\n/* Responsive */\n@media (max-width: 768px) {\n\t.card {\n\t\tmargin: 12px !important;\n\t\tpadding: 12px !important;\n\t}\n\n\t.card h1,\n\t.card h2 {\n\t\tfont-size: 18px !important;\n\t}\n\n\t.card:before {\n\t\tmargin: -12px -12px 20px -12px;\n\t\theight: 32px;\n\t}\n}\n"
+        }
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.4,
+      "position": [
+        -1360,
+        256
+      ],
+      "id": "97bec497-6503-4a93-a997-a196efc6e371",
+      "name": "Questions",
+      "webhookId": "c5cb68fe-9d64-4959-aa5d-bca379d66c95"
+    },
+    {
+      "parameters": {
+        "defineForm": "json",
+        "jsonOutput": "=[{{ $('SplitQuestions').item.json }}]",
+        "options": {
+          "formTitle": "Questions to understand",
+          "buttonLabel": "Answer",
+          "customCss": ":root {\n\t/* Typography */\n\t--font-family: 'Open Sans', sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\n\t--font-size-body: 15px;\n\t--font-size-label: 16px;\n\t--font-size-input: 16px;\n\t--font-size-header: 26px;\n\t--font-size-paragraph: 16px;\n\t--font-size-error: 14px;\n\n\t/* Colors */\n\t--color-background: #f6faf8;\n\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #d1e7dd;\n\t--color-card-shadow: rgba(16, 185, 129, 0.18);\n\n\t--color-header: #1f2937;\n\t--color-html-text: #374151;\n\n\t--color-label: #374151;\n\t--color-input-text: #1f2937;\n\t--color-input-border: #cfe5dc;\n\t--color-focus-border: #22c55e;\n\n\t--color-submit-btn-bg: #22c55e;\n\t--color-submit-btn-text: #ffffff;\n\n\t--color-error: #dc2626;\n\n\t/* Layout */\n\t--border-radius-card: 14px;\n\t--border-radius-input: 10px;\n\n\t/* Spacing */\n\t--padding-card: 28px;\n\t--padding-form-input: 16px;\n\n\t/* Dimensions */\n\t--container-width: 520px;\n\t--submit-btn-height: 56px;\n\n\t/* Effects */\n\t--box-shadow-card: 0px 14px 40px rgba(16, 185, 129, 0.18);\n\t--opacity-placeholder: 0.45;\n}\n\n/* Card */\n.card {\n\tposition: relative;\n\tmax-width: var(--container-width);\n\tmargin: 32px auto;\n\tpadding: var(--padding-card);\n\tbackground: var(--color-card-bg) !important;\n\tborder-radius: var(--border-radius-card);\n\tbox-shadow: var(--box-shadow-card);\n\tfont-family: var(--font-family);\n}\n\n/* Accent bar */\n.card:before {\n\tcontent: '';\n\tdisplay: block;\n\theight: 56px;\n\tbackground: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);\n\tmargin: calc(-1 * var(--padding-card))\n\t        calc(-1 * var(--padding-card))\n\t        32px\n\t        calc(-1 * var(--padding-card));\n\tborder-radius: var(--border-radius-card) var(--border-radius-card) 0 0;\n}\n\n/* Headings */\n.card h1,\n.card h2 {\n\ttext-align: center !important;\n\tcolor: var(--color-header) !important;\n\tfont-weight: var(--font-weight-bold) !important;\n\tmargin: 20px 0 !important;\n\tfont-size: var(--font-size-header) !important;\n}\n\n/* Text */\n.card p {\n\tfont-size: var(--font-size-paragraph) !important;\n\tline-height: 1.6 !important;\n\tcolor: var(--color-html-text);\n}\n\n/* Inputs */\n.form-group {\n\tmargin-bottom: 20px;\n}\n\n.card input,\n.card textarea,\n.card select {\n\twidth: 100% !important;\n\tpadding: var(--padding-form-input) !important;\n\tborder: 2px solid var(--color-input-border) !important;\n\tborder-radius: var(--border-radius-input) !important;\n\tfont-size: var(--font-size-input) !important;\n\tcolor: var(--color-input-text);\n\ttransition: border-color 0.25s ease, box-shadow 0.25s ease !important;\n}\n\n.card textarea {\n\tmin-height: 160px;\n}\n\n/* Focus */\n.card input:focus,\n.card textarea:focus,\n.card select:focus {\n\tborder-color: var(--color-focus-border) !important;\n\tbox-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15) !important;\n\toutline: none !important;\n}\n\n/* Submit */\n.card button[type=\"submit\"] {\n\twidth: 100% !important;\n\theight: var(--submit-btn-height);\n\tbackground: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;\n\tcolor: var(--color-submit-btn-text) !important;\n\tborder-radius: 12px !important;\n\tfont-size: 18px !important;\n\tfont-weight: var(--font-weight-bold) !important;\n\tbox-shadow: 0 6px 20px rgba(34, 197, 94, 0.35) !important;\n\tborder: none !important;\n\tcursor: pointer !important;\n\ttransition: transform 0.2s ease, box-shadow 0.2s ease !important;\n}\n\n.card button[type=\"submit\"]:hover {\n\ttransform: translateY(-2px);\n\tbox-shadow: 0 10px 28px rgba(34, 197, 94, 0.45) !important;\n}\n\n/* Error */\n.error-hidden {\n\tcolor: var(--color-error);\n\tfont-size: var(--font-size-error);\n\tvisibility: hidden;\n}\n\n/* Mobile */\n@media (max-width: 768px) {\n\t.card {\n\t\tmargin: 16px !important;\n\t\tpadding: 20px !important;\n\t}\n\n\t.card h1,\n\t.card h2 {\n\t\tfont-size: 22px !important;\n\t}\n}\n"
+        }
+      },
+      "id": "46b238e6-624f-42e1-a91e-a6f264e5b41e",
+      "name": "RelevantQuestions",
+      "type": "n8n-nodes-base.form",
+      "position": [
+        -336,
+        480
+      ],
+      "webhookId": "8d220b4e-1c9c-4f52-8d1f-0e5f396f7745",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemma-3-27b-it",
+        "options": {}
+      },
+      "id": "e60d1ebb-d7dc-4c7d-b975-4b86c9a003b2",
+      "name": "Google Gemini Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "position": [
+        -1136,
+        608
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "3e6s01jsratKYJHp",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "[\n  {\n    \"fieldLabel\": \"Label for the question to ask\",\n    \"placeholder\": \"Short hint to guide the user’s answer\",\n    \"requiredField\": true,\n    \"fieldType\": \"text\"\n  }\n]"
+      },
+      "id": "8c653aa0-2b10-440c-88fe-b117b7793b22",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -1008,
+        608
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "HumanMessagePromptTemplate",
+              "message": "<role>\nYou are an expert LLM-based prompt refinement agent. Your goal is to analyze vague or semi-structured input from a user who wants to build an automation or AI-based tool or execute a general task using AI. Based on what they share, your task is to generate 3 **highly specific** questions that, if answered, would help a prompt engineer craft a more tailored and effective prompt for the tool they wish to build. The questions you generate should be very specific to the ai agent/task the user wants to build/execute, and completely relevant for the idea they want to build it for.\n</role>\n\n<input>\nYou will receive a JSON-like array with the following Pain text fields:\n- \"Goal\" – The overall objective of the tool\n- \"Tools\" – Any tools, APIs, or services that may be used\n- \"Inputs\" – Data or user input the tool receives\n- \"Output\" – The intended result or artifact the tool should produce\n\nThe clarity and completeness of these fields may vary.\n\n</input>\n\n<tools>\nYou do not have access to external tools. Only the given input array and your own reasoning ability are available. You cannot fetch additional context.\n</tools>\n\n<instructions>\n1. Parse and understand the user's goal.\n2. Identify any ambiguity or key gaps in what’s provided.\n3. Generate **3 clear, concise follow-up questions** that would best clarify:   \n         - Context or tone expectations   \n         - Format or structure needed   \n         - Any target audience or usage specifics\n4. Explain **why** each question is important (in 1–2 sentences).\n5. Return your output in the strict JSON array format defined above.\n6. Identify missing but critical details that would affect how an AI agent should behave.\n7. For each missing detail, create one structured form field in the output format.\n8. Use fieldLabel for the question, placeholder to guide, and set requiredField appropriately.\n9. Optionally specify fieldType (e.g., textarea for long text, dropdown if fixed options are obvious).</instructions>\n\n<constraints>\nYour output must be in the following format:\n[\n  {\n    \"fieldLabel\": \"Label for the question to ask\",\n    \"placeholder\": \"Short hint to guide the user’s answer\",\n    \"requiredField\": true or false,\n    \"fieldType\": \"number\" | \"email\" | \"textarea\" | \"dropdown\" (not optional; take default as 'textarea')\n  }\n]\n- Ask no more than 3 questions.\n- Only ask questions that meaningfully impact how the tool would be built or how the AI would behave.\n- Your questions must be simple, not technical or abstract.\n- Do not repeat or rephrase questions already answered in the input.\n- Be practical — ask questions that a human prompt engineer would truly need to ask to make the result more useful.\n</constraints>\n\n<output>\n[\n  {\n    \"fieldLabel\": \"Preferred tone or style for the LinkedIn post\",\n    \"placeholder\": \"e.g., professional, friendly, witty\",\n    \"requiredField\": true,\n    \"fieldType\": \"textarea\"\n  },\n  {\n    \"fieldLabel\": \"Should the post summarize the video or extract quotes?\",\n    \"placeholder\": \"e.g., summary only, key quotes, both\",\n    \"requiredField\": true,\n    \"fieldType\": \"textarea\"\n  },\n  {\n    \"fieldLabel\": \"Who is the target audience for the LinkedIn post?\",\n    \"placeholder\": \"e.g., hiring managers, founders, general network\",\n    \"requiredField\": false,\n    \"fieldType\": \"textarea\"\n  }\n]\n</output>"
+            }
+          ]
+        }
+      },
+      "id": "4a9f94c2-79bb-4f14-a600-6a68da43639b",
+      "name": "RelatedQuestionAI",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        -1136,
+        384
+      ],
+      "typeVersion": 1.6
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -784,
+        352
+      ],
+      "id": "b45a10bf-d62d-4123-8f60-85319f0d9549",
+      "name": "SplitQuestions"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -240,
+        160
+      ],
+      "id": "a62e47f3-2eaa-41e7-a0fe-bc463cddf127",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -560,
+        352
+      ],
+      "id": "99184b30-0402-4726-8b34-6eac16838937",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemma-3-27b-it",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        400
+      ],
+      "id": "e6afc32b-7d2c-4c65-984d-9653ee80cc4c",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "hY4R7WPxR0KLzkpf",
+          "name": "Google Gemini(PaLM) Api account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ JSON.stringify($input.all()) }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "HumanMessagePromptTemplate",
+              "message": "<role> \nYou are an expert AI prompt generator designed to turn semi-structured user inputs into effective and well-formatted prompts for downstream AI agents. Your goal is to craft high-quality prompts that follow strict formatting and enable the target AI agent to perform its task optimally. And to do that you'll be receiving the user's input like what they want to build, which tool AI can use, what input the ai need to expect and what output the user want from their ai agent. Also you'll be receiving some specific constraints for the ai agent to be taken care along with some clarifying questions. \n</role>  \n\n<inputs> \nYou will receive a JSON array that includes: \n- The user's primary intent (e.g., what they want to build) \n- What tools they plan to use (or \"N/A\") \n- What input the tool will receive \n- What output they expect  \n- Up to 3 additional form answers for clarifying context (e.g., tone, style, audience)  \n\nExample input:\n[\n  {\n    \"Goal\": \"Video to LinkedIn post\",\n    \"Tools\": \"N/A\",\n    \"Inputs\": \"video\",\n    \"Output\": \"LinkedIn Post\",\n    \"submittedAt\": \"2025-06-12T00:47:05.645+05:30\",\n    \"formMode\": \"test\"\n  },\n  {\n    \"Preferred tone or style for the LinkedIn post\": \"witty\",\n    \"submittedAt\": \"2025-06-12T01:15:11.608+05:30\",\n    \"formMode\": \"test\"\n  },\n  {\n    \"Should the post summarize the video or extract quotes?\": \"both\",\n    \"submittedAt\": \"2025-06-12T01:15:14.925+05:30\",\n    \"formMode\": \"test\"\n  },\n  {\n    \"Who is the target audience for the LinkedIn post?\": \"general network\",\n    \"submittedAt\": \"2025-06-12T01:15:20.045+05:30\",\n    \"formMode\": \"test\"\n  }\n]\n</inputs>\n\n<tools>\nYou do not have access to APIs, databases, or external documents. Use only the input provided.\n</tools>\n\n\n<instructions>\n1. Parse and extract all user-provided values from the JSON array.\n2. Understand the user’s goal, expected inputs and outputs, and key contextual details.\n3. Using that information, generate a final prompt in strictly the following format :\n\n- **<role>**: What the downstream AI agent’s expertise and purpose should be  \n- **<constraints>**: Any boundaries (length, style, tone, technical limits)\n- **<inputs>**: What inputs it will receive, in what format, and example values  \n- **<tools>**: Any tools or data sources it can or cannot access  \n- **<instructions>**: Step-by-step guidance for the agent to perform its task  \n- **<conclusions>**: What kind of output it should generate, with format or examples  \n\n4. Ensure the final prompt is useful for a general-purpose LLM, without ambiguity.\n</instructions>\n\n\n<instructions>\n1. Parse the video transcript and understand its core message.\n2. Identify key insights and at least one memorable quote.\n3. Write a LinkedIn post that begins with a strong hook, reflects a witty tone, and engages the general network.\n4. Balance insight and personality while staying platform-native.\n</instructions>\n\n<constraints>\n- Keep the post under 3000 characters\n- Avoid technical jargon unless it serves the audience\n- No generic intros or robotic tone\n</constraints>\n\n<conclusions>\nReturn a single, polished LinkedIn post. Example:\n\n---\n“Most products don’t need onboarding. They need rethinking.”\n\nJust watched a great clip on UX that reminded me how design isn’t about making things easier — it’s about making them unnecessary.\n\n#UX #DesignThinking\n---\n</conclusions>\n\n<output>\nReturn ONLY valid JSON.\nDo NOT include markdown.\nDo NOT include code fences.\nDo NOT include explanations.\n\nReturn exactly this structure:\n\n{\n  \"prompt\": \"<the full generated prompt as a string>\"\n}\n</output>\n\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.8,
+      "position": [
+        -32,
+        160
+      ],
+      "id": "6aa9e5cd-8640-4f1f-bd13-d04ac3ddd381",
+      "name": "Prompt generator",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "[\n  {\n\t\"text\": \"this is the prompt\"\n\t\n}\n]"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        208,
+        560
+      ],
+      "id": "7171e974-913a-4fee-b22b-d4c9db85a75e",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        144,
+        336
+      ],
+      "id": "d21f152b-98d7-4789-a8f7-210fc0362a0b",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Here is your copy paste ready prompt",
+        "completionMessage": "=\n{{ $json.output[0].text }}\n\n--------------------------------\n\nYou can copy this prompt and use it for a best ouput",
+        "options": {
+          "customCss": ".card {\n\tposition: relative;\n\tmax-width: 500px;\n\tmargin: 20px auto;\n\tpadding: 20px;\n\tbackground: #fefefe !important;\n\tborder-radius: 12px;\n\tbox-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);\n\tfont-family: 'Courier New', monospace;\n\tcolor: #1f2937;\n\tfont-size: 16px;\n\tline-height: 1.6;\n\twhite-space: pre-wrap;\n}\n\n.header p {\n  text-align: left;\n}\n\n@media (max-width: 768px) {\n\t.card {\n\t\tmargin: 10px !important;\n\t\tpadding: 15px !important;\n\t\tfont-size: 14px;\n\t}\n}\n"
+        }
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.4,
+      "position": [
+        320,
+        160
+      ],
+      "id": "d2415646-cde0-419a-a791-8c79ef918578",
+      "name": "Form",
+      "webhookId": "dee9c3b8-b6b2-4ac2-921e-d5da2060caf2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Questions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Questions": {
+      "main": [
+        [
+          {
+            "node": "RelatedQuestionAI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "RelatedQuestionAI",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "RelatedQuestionAI",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RelatedQuestionAI": {
+      "main": [
+        [
+          {
+            "node": "SplitQuestions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SplitQuestions": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RelevantQuestions": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "RelevantQuestions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Prompt generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Prompt generator",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompt generator": {
+      "main": [
+        [
+          {
+            "node": "Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Prompt generator",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Form": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "87a6a7f0-320b-4516-853a-de64fbd94be2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ad1674927130c1232b5666416488d6eb17004460554086fdc4057846844094fa"
+  },
+  "id": "byydrucHr98pbFal",
+  "tags": []
+}
