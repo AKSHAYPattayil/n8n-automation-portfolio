@@ -28,27 +28,6 @@ The agent determines *when* a tool is required and *which* tool best fits the us
 Note: The chatbot’s tone has been intentionally set to be sarcastic and slightly insulting for demonstration purposes. Responses may come across as cheeky or mean.
 
 ---
-
-##  Architecture
-
-User
-↓
-Chat Trigger (UI)
-↓
-AI Agent (Decision Maker)
-├─ Language Model (Gemini / swappable)
-├─ Memory Buffer
-└─ Tools
-├─ Weather API (Open-Meteo)
-└─ RSS Feed Reader
-↓
-Final Response to User
-
-
-> The agent itself does not fetch data — it **decides which tool should perform the task**.
-
----
-
 ## 🔧 Workflow Components
 
 ### 1. Chat Trigger
